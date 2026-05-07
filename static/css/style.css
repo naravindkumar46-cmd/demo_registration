@@ -1,0 +1,100 @@
+/**
+ * Custom CSS for registration form.
+ * Minimal custom styles - most styling is handled by Tailwind CSS.
+ */
+
+/* Animation delay utilities for loading indicator */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animation-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+}
+
+/* Smooth transitions for form inputs */
+input:focus {
+    transition: all 0.3s ease;
+}
+
+/* Ensure proper form alignment */
+form {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Ensure consistent rendering across browsers */
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Focus visible for keyboard navigation */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+    }
+    .bg-gradient-to-br {
+        background: white;
+    }
+}
+
+/* Mobile responsiveness tweaks */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+
+    .shadow-xl {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Prevent text selection on repeated clicks */
+button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/* Loading indicator animation */
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.animate-pulse {
+    animation: pulse-dot 1.4s cubic-bezier(0.8, 0.5, 0.2, 1) infinite;
+}
