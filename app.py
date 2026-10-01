@@ -103,7 +103,7 @@ def register_routes(app: Flask, limiter: Limiter) -> None:
         return render_template('register.html')
 
     @app.route('/register', methods=['POST'])
-    @limiter.limit("5 per minute")
+    @limiter.limit("20 per minute")
     def register() -> Tuple[Dict[str, Any], int]:
         """
         User registration endpoint.
@@ -121,7 +121,7 @@ def register_routes(app: Flask, limiter: Limiter) -> None:
             - 409: Username or email already exists
             - 500: Server error
 
-        Rate Limit: 5 requests per minute per IP
+        Rate Limit: 20 requests per minute per IP
         """
         try:
             # Get request data (handles both JSON and form data)

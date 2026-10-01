@@ -124,19 +124,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const indicator = document.getElementById('confirmPasswordIndicator');
 
         if (!confirmPassword) {
-            hideFeedback(feedback);
+            showFeedback(feedback, 'Password confirmation is required');
             indicator.classList.add('hidden');
+            confirmPasswordInput.setAttribute('aria-invalid', 'true');
             return { isValid: false };
         }
 
         if (password !== confirmPassword) {
             showFeedback(feedback, 'Passwords do not match');
             indicator.classList.add('hidden');
+            confirmPasswordInput.setAttribute('aria-invalid', 'true');
             return { isValid: false };
         }
 
         hideFeedback(feedback);
         indicator.classList.remove('hidden');
+        confirmPasswordInput.setAttribute('aria-invalid', 'false');
         return { isValid: true };
     }
 
