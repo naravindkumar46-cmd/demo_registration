@@ -117,6 +117,21 @@ def test_passwords_not_matching() -> None:
     assert 'confirm_password' in response.json()['details']
 
 
+def test_missing_password_confirmation() -> None:
+    """Test registration without a password confirmation."""
+    data = {
+        'username': 'user456',
+        'email': 'user456@example.com',
+        'password': 'SecurePass123',
+    }
+    response = requests.post(f'{BASE_URL}/register', json=data)
+    print_response("Missing Password Confirmation", response)
+    assert response.status_code == 400
+    assert response.json()['details']['confirm_password'] == (
+        'Password confirmation is required'
+    )
+
+
 def test_invalid_email() -> None:
     """Test registration with invalid email format."""
     data = {
